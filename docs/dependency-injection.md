@@ -47,3 +47,19 @@ Use it when you need it
 - prototype -> created for each applying
 - request -> created for each HTTP request
 - session -> created for each HTTP session
+
+## Bean Lifecycle Hooks
+
+- `@PostConstruct` -> called after a bean is created and initialized
+- `@PreDestroy` -> an opportunity to release resources
+  - database connections
+  - file handles
+  - threads
+
+### Issue for Used Port
+
+```shell
+lsof -i :8080
+# ex: PID is 42962
+kill -9 42962
+```
