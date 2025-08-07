@@ -26,3 +26,17 @@ Spring can create objects and inject them into our classes.
 
 - Give us more control to configure beans conditionally
 - For 3rd-party code that classes we can't modify
+
+## Lazy Initialization
+
+Bean Initialization
+
+- Early / Eager
+  - always create instance even not used in context
+- Lazy
+  - an optimization technique
+  - create objects when needed
+
+Use it when you need it
+
+> Premature optimization is the root of all evil.
