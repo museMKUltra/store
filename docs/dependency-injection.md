@@ -21,3 +21,8 @@ Spring can create objects and inject them into our classes.
 - `@Autowired` is used for **class has multiple constructors**, and not necessary for single constructor.
 
 > Technically, `@Service` is an alias for `@Component`
+
+## Configuring Beans Using Code
+
+- Give us more control to configure beans conditionally
+- For 3rd-party code that classes we can't modify
