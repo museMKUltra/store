@@ -18,6 +18,11 @@ public class OrderService {
         System.out.println("Order service PostConstruct");
     }
 
+    @PreDestroy
+    public void cleanup() {
+        System.out.println("Order service PreDestroy");
+    }
+
     public void placeOrder() {
         paymentService.processPayment(10);
     }
