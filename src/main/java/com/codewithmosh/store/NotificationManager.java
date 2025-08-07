@@ -12,6 +12,6 @@ public class NotificationManager {
     }
 
     public void sendNotification(String message) {
-        notificationService.send(message);
+        notificationService.send(message, "email");
     }
 }
