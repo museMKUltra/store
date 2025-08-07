@@ -40,3 +40,10 @@ Bean Initialization
 Use it when you need it
 
 > Premature optimization is the root of all evil.
+
+## Bean Scopes
+
+- singleton -> only created once
+- prototype -> created for each applying
+- request -> created for each HTTP request
+- session -> created for each HTTP session
