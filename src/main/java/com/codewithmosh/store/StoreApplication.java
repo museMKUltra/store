@@ -11,7 +11,6 @@ public class StoreApplication {
         ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
         var userService = context.getBean(UserService.class);
         userService.registerUser(new User(123L, "user", "mosh@codewithmosh.com", "password"));
-        userService.registerUser(new User(123L, "user", "mosh@codewithmosh.com", "password"));
     }
 
 }
