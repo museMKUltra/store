@@ -33,3 +33,13 @@ JDBC
 - Java Database Connectivity
 - Allows Java code to execute SQL directly
 - We have to manually manage everything
+
+## Lombok
+
+Gives us bunch of annotations and instruct Intellij to **automatically generate annotations and utility methods at compile time** for simplifying our code.
+
+- `@Getter`
+- `@Setter`
+- `@AllArgsConstructor`
+- `@NoArgsConstructor`
+- `@ToString`
