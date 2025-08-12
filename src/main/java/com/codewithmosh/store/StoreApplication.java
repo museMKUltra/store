@@ -7,10 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StoreApplication {
 
     public static void main(String[] args) {
-        var user = new User(1L, "name", "email", "password");
-        user.setName("John");
-        user.setEmail("john@example.com");
-        user.setPassword("password");
+        var user = User.builder()
+                .name("John")
+                .password("password")
+                .email("john@example.com")
+                .build();
     }
 
 }
