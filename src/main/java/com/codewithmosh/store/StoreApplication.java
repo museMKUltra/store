@@ -15,6 +15,7 @@ public class StoreApplication {
                 .build();
 
         product.addCategory("category");
+        System.out.println(product);
     }
 
 }
