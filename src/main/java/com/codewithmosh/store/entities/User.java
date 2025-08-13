@@ -29,6 +29,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user")
+    @Builder.Default
     private List<Address> addresses = new ArrayList<>();
 
     public void addAddress(Address address) {
