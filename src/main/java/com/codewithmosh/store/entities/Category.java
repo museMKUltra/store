@@ -2,33 +2,25 @@ package com.codewithmosh.store.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@ToString
-@Table(name = "categories")
+@Entity
+@Table(name = "categories", schema = "store")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Byte id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "category")
-    @ToString.Exclude
-    private Set<Product> products = new HashSet<>();
+    @OneToMany
+    @JoinColumn(name = "category_id")
+    private Set<Product> products = new LinkedHashSet<>();
 
-    public Category(String name) {
-        this.name = name;
-    }
 }
