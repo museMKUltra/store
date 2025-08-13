@@ -34,12 +34,14 @@ public class User {
     @OneToMany(mappedBy = "user")
     @Builder.Default
     private List<Address> addresses = new ArrayList<>();
+
     @ManyToMany
     @JoinTable(
             name = "user_tags",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
+    @Builder.Default
     private Set<Tag> tags = new HashSet<>();
 
     public void addAddress(Address address) {
