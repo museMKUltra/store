@@ -24,6 +24,7 @@ public class Tag {
     private String name;
 
     @ManyToMany(mappedBy = "tags")
+    @ToString.Exclude
     private Set<User> users = new HashSet<>();
 
     public Tag(String name) {
