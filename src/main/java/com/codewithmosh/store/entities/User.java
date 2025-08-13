@@ -3,6 +3,9 @@ package com.codewithmosh.store.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -18,9 +21,18 @@ public class User {
 
     @Column(name = "name")
     private String name;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "password")
     private String password;
 
+    @OneToMany(mappedBy = "user")
+    private List<Address> addresses = new ArrayList<>();
+
+    public void addAddress(Address address) {
+        addresses.add(address);
+        address.setUser(this);
+    }
 }
