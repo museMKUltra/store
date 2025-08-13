@@ -2,6 +2,7 @@ package com.codewithmosh.store.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
@@ -10,6 +11,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "tags")
 public class Tag {
     @Id
@@ -21,4 +23,8 @@ public class Tag {
 
     @ManyToMany(mappedBy = "tags")
     private Set<User> users = new HashSet<>();
+
+    public Tag(String name) {
+        this.name = name;
+    }
 }
