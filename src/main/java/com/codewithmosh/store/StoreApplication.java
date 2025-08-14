@@ -1,21 +1,23 @@
 package com.codewithmosh.store;
 
 import com.codewithmosh.store.entities.Product;
+import com.codewithmosh.store.entities.User;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.math.BigDecimal;
 
 @SpringBootApplication
 public class StoreApplication {
 
     public static void main(String[] args) {
-        var product = Product.builder()
-                .name("product")
-                .price(BigDecimal.valueOf(123))
+        var user = User.builder()
+                .id(1L)
+                .name("John")
+                .email("john@example.com")
+                .password("password")
                 .build();
 
-        product.addCategory("category");
-        System.out.println(product);
+        user.getWishlist().add(new Product());
+
+        System.out.println(user);
     }
 
 }
