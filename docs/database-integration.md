@@ -67,3 +67,11 @@ In reality, this approach should only be used for
 1. Use Hibernate to create a working prototype which database is in good shape
 2. Use JPA buddy to create the initial migration for properly versioning your database
 3. Allow to recreate the same database on other machines
+
+## Managing Transactions
+
+A group of operations that succeed or fail together.
+> Keep a system in a consistence state.
+
+- Create an order
+- Reduce the stock
