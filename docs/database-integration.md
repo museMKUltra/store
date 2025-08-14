@@ -6,7 +6,7 @@
 
 SPRING DATA JPA
 
-- Provides repositories interfaces 
+- Provides repositories interfaces
 
 ### Object-oriented persistence
 
@@ -36,7 +36,8 @@ JDBC
 
 ## Lombok
 
-Gives us bunch of annotations and instruct Intellij to **automatically generate annotations and utility methods at compile time** for simplifying our code.
+Gives us bunch of annotations and instruct Intellij to **automatically generate annotations and utility methods at
+compile time** for simplifying our code.
 
 - `@Getter`
 - `@Setter`
@@ -56,11 +57,11 @@ In reality, this approach should only be used for
 ### Problems
 
 1. With model first, we should include all the database details in entities.
-    > Otherwise, our database schema will not be in good shape.
+   > Otherwise, our database schema will not be in good shape.
 2. As we modify our domain model, Hibernate may update the schema in ways that may not be optimized.
-    > So over time, our database schema might end up looking real ugly.
+   > So over time, our database schema might end up looking real ugly.
 3. Losing versioning make us can't recreate the exact same database on other machines.
-    > Like a testing environment, production environment, or on someone else's machine in the same team.
+   > Like a testing environment, production environment, or on someone else's machine in the same team.
 
 ### Suggestions
 
@@ -75,3 +76,19 @@ A group of operations that succeed or fail together.
 
 - Create an order
 - Reduce the stock
+
+## Fetching Strategies
+
+Eager loading -> related objects are immediately loaded
+
+- `@OneToOne`
+- `@ManyToOne`
+
+> Use it when we always need the related data.
+
+Lazy loading -> related objects are loaded when accessed
+
+- `@OneToMany`
+- `@ManyToMany`
+
+> Use it for relationships are optional or rarely accessed.
