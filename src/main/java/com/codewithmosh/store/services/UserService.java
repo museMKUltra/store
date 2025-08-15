@@ -64,4 +64,8 @@ public class UserService {
         userRepository.save(user);
         System.out.println(entityManager.contains(user) ? "Persistent" : "Transient / Detached");
     }
+
+    public void deleteRelated() {
+       userRepository.deleteById(7L);
+    }
 }
