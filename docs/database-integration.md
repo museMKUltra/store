@@ -79,14 +79,18 @@ A group of operations that succeed or fail together.
 
 ## Fetching Strategies
 
-Eager loading -> related objects are immediately loaded
+### Eager loading
+
+Related objects are immediately loaded.
 
 - `@OneToOne`
 - `@ManyToOne`
 
 > Use it when we always need the related data.
 
-Lazy loading -> related objects are loaded when accessed
+### Lazy loading
+
+Related objects are loaded when accessed.
 
 - `@OneToMany`
 - `@ManyToMany`
