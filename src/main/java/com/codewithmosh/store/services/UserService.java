@@ -39,8 +39,9 @@ public class UserService {
         System.out.println(profile.getUser().getEmail());
     }
 
+    @Transactional
     public void showRelatedAddress(){
         var address = addressRepository.findById(1L).orElseThrow();
-        System.out.println(address.getStreet());
+        System.out.println(address.getUser().getEmail());
     }
 }
