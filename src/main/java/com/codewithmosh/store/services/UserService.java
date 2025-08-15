@@ -40,8 +40,28 @@ public class UserService {
     }
 
     @Transactional
-    public void showRelatedAddress(){
+    public void showRelatedAddress() {
         var address = addressRepository.findById(1L).orElseThrow();
         System.out.println(address.getUser().getEmail());
+    }
+
+    public void persistRelated() {
+        var user = User.builder()
+                .name("John")
+                .email("john@example.com")
+                .password("password")
+                .build();
+
+        var address = Address.builder()
+                .street("street")
+                .city("city")
+                .state("state")
+                .zip("zip")
+                .build();
+
+        user.addAddress(address);
+
+        userRepository.save(user);
+        System.out.println(entityManager.contains(user) ? "Persistent" : "Transient / Detached");
     }
 }
