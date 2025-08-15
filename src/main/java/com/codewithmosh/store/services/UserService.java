@@ -65,7 +65,11 @@ public class UserService {
         System.out.println(entityManager.contains(user) ? "Persistent" : "Transient / Detached");
     }
 
+    @Transactional
     public void deleteRelated() {
-       userRepository.deleteById(7L);
+        var user = userRepository.findById(8L).orElseThrow();
+        var address = user.getAddresses().getFirst();
+        user.removeAddress(address);
+        userRepository.save(user);
     }
 }
