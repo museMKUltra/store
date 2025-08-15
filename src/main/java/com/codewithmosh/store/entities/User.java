@@ -56,6 +56,10 @@ public class User {
     @Builder.Default
     private Set<Product> wishlist = new HashSet<>();
 
+    public void addWishlist(Product product) {
+        wishlist.add(product);
+    }
+
     public void addAddress(Address address) {
         addresses.add(address);
         address.setUser(this);

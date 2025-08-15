@@ -4,6 +4,7 @@ import com.codewithmosh.store.entities.Category;
 import com.codewithmosh.store.entities.Product;
 import com.codewithmosh.store.repositories.CategoryRepository;
 import com.codewithmosh.store.repositories.ProductRepository;
+import com.codewithmosh.store.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.math.BigDecimal;
 public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final UserRepository userRepository;
 
     public void createProductWithNewCategory() {
         var product = Product.builder()
@@ -45,5 +47,16 @@ public class ProductService {
         product.addCategory(category);
 
         productRepository.save(product);
+    }
+
+    @Transactional
+    public void addProductsToWishlist() {
+        var user = userRepository.findById(4L).orElseThrow();
+
+        productRepository.findAll().forEach(product -> {
+            user.getWishlist().add(product);
+        });
+
+        userRepository.save(user);
     }
 }
