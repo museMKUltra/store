@@ -47,12 +47,10 @@ public class ProductService {
 
     @Transactional
     public void addProductsToWishlist() {
-        var user = userRepository.findById(4L).orElseThrow();
+        var user = userRepository.findById(5L).orElseThrow();
+        var products = productRepository.findAll();
 
-        productRepository.findAll().forEach(product -> {
-            user.getWishlist().add(product);
-        });
-
+        products.forEach(user::addWishlist);
         userRepository.save(user);
     }
 
