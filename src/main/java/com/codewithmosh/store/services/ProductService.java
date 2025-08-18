@@ -56,13 +56,6 @@ public class ProductService {
 
     @Transactional
     public void deleteProduct() {
-        var product = productRepository.findById(1L).orElseThrow();
-
-        userRepository.findAll().forEach(user -> {
-            user.removeWishlist(product);
-            userRepository.save(user);
-        });
-
-        productRepository.delete(product);
+        productRepository.deleteById(2L);
     }
 }

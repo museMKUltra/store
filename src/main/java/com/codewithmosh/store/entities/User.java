@@ -47,7 +47,7 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Profile profile;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @ManyToMany()
     @JoinTable(
             name = "wishlist",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -58,12 +58,6 @@ public class User {
 
     public void addWishlist(Product product) {
         wishlist.add(product);
-    }
-
-    public void removeWishlist(Product product) {
-        if (wishlist.contains(product)) {
-            wishlist.remove(product);
-        }
     }
 
     public void addAddress(Address address) {
