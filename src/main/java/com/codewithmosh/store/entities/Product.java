@@ -30,9 +30,4 @@ public class Product {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "category_id")
     private Category category;
-
-    public void addCategory(Category category) {
-        this.category = category;
-        category.addProduct(this);
-    }
 }

@@ -25,9 +25,8 @@ public class ProductService {
                 .name("New Product")
                 .description("New Product")
                 .price(BigDecimal.valueOf(123))
+                .category(category)
                 .build();
-
-        product.addCategory(category);
 
         productRepository.save(product);
     }
