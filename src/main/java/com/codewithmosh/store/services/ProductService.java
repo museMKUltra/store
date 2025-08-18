@@ -19,14 +19,12 @@ public class ProductService {
     private final UserRepository userRepository;
 
     public void createProductWithNewCategory() {
+        var category = new Category("New Category");
+
         var product = Product.builder()
                 .name("New Product")
                 .description("New Product")
                 .price(BigDecimal.valueOf(123))
-                .build();
-
-        var category = Category.builder()
-                .name("New Category")
                 .build();
 
         product.addCategory(category);
