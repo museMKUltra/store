@@ -33,15 +33,14 @@ public class ProductService {
 
     @Transactional
     public void createProductWithExistingCategory() {
+        var category = categoryRepository.findById((byte) 1).orElseThrow();
+
         var product = Product.builder()
                 .name("New Product")
                 .description("New Product")
                 .price(BigDecimal.valueOf(123))
+                .category(category)
                 .build();
-
-        var category = categoryRepository.findById(1L).orElseThrow();
-
-        product.addCategory(category);
 
         productRepository.save(product);
     }
