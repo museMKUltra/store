@@ -96,3 +96,8 @@ Related objects are loaded when accessed.
 - `@ManyToMany`
 
 > Use it for relationships are optional or rarely accessed.
+
+## Fetching Partial Data with Projections
+
+- Better to use **interfaces in the majority of cases**
+- Use classes only if you need to **include additional logic in that class**
