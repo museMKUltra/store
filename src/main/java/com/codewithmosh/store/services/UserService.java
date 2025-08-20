@@ -11,8 +11,6 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @AllArgsConstructor
 @Service
 public class UserService {
@@ -106,7 +104,7 @@ public class UserService {
 
     @Transactional
     public void findLoyaltyPoints() {
-        var profiles = profileRepository.findByLoyaltyPointsGreaterThan(2);
+        var profiles = profileRepository.findByLoyaltyPointsGreaterThanOrderByUserEmail(2);
         profiles.forEach(p -> {
             System.out.println(p.getUser().getEmail());
         });
