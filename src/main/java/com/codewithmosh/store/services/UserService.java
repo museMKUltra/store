@@ -104,8 +104,11 @@ public class UserService {
         profileRepository.save(profile);
     }
 
+    @Transactional
     public void findLoyaltyPoints() {
         var profiles = profileRepository.findByLoyaltyPointsGreaterThan(2);
-        profiles.forEach(p -> System.out.println(p.getId()));
+        profiles.forEach(p -> {
+            System.out.println(p.getUser().getEmail());
+        });
     }
 }
