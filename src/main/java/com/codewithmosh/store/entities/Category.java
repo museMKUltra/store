@@ -29,6 +29,10 @@ public class Category {
         this.name = name;
     }
 
+    public Category(Byte id) {
+        this.id = id;
+    }
+
     public void addProduct(Product product) {
         products.add(product);
     }
