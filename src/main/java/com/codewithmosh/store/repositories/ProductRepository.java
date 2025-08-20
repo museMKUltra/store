@@ -2,7 +2,7 @@ package com.codewithmosh.store.repositories;
 
 import com.codewithmosh.store.entities.Category;
 import com.codewithmosh.store.entities.Product;
-import com.codewithmosh.store.projections.ProductSummary;
+import com.codewithmosh.store.projections.ProductSummaryDto;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -40,6 +40,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     // Null
     List<Product> findByDescriptionNull();
+
     List<Product> findByDescriptionNotNull();
 
     // Multiple conditions
@@ -66,5 +67,5 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Query("update Product p set p.price = :newPrice where p.category.id = :categoryId")
     void updatePriceByCategory(BigDecimal newPrice, Byte categoryId);
 
-    List<ProductSummary> findByCategory(Category category);
+    List<ProductSummaryDto> findByCategory(Category category);
 }
