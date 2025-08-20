@@ -103,4 +103,9 @@ public class UserService {
 
         profileRepository.save(profile);
     }
+
+    public void findLoyaltyPoints() {
+        var profiles = profileRepository.findByLoyaltyPointsGreaterThan(2);
+        profiles.forEach(p -> System.out.println(p.getId()));
+    }
 }
