@@ -36,4 +36,8 @@ public class Profile {
     @MapsId
     @ToString.Exclude
     private User user;
+
+    public Profile(User user) {
+        this.user = user;
+    }
 }

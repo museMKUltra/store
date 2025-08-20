@@ -1,6 +1,7 @@
 package com.codewithmosh.store.services;
 
 import com.codewithmosh.store.entities.Address;
+import com.codewithmosh.store.entities.Profile;
 import com.codewithmosh.store.entities.User;
 import com.codewithmosh.store.repositories.AddressRepository;
 import com.codewithmosh.store.repositories.ProfileRepository;
@@ -9,6 +10,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -86,5 +89,18 @@ public class UserService {
             System.out.println(u);
             u.getAddresses().forEach(System.out::println);
         });
+    }
+
+    public void populateUsers() {
+        var user = User.builder()
+                .name("Twenty")
+                .email("twenty@example.com")
+                .password("password")
+                .build();
+
+        var profile = new Profile(user);
+        profile.setLoyaltyPoints(20);
+
+        profileRepository.save(profile);
     }
 }
