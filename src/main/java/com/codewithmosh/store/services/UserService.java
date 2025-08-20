@@ -72,4 +72,10 @@ public class UserService {
         user.removeAddress(address);
         userRepository.save(user);
     }
+
+    @Transactional
+    public void fetchUser() {
+        var user = userRepository.findByEmail("john.doe@example.com").orElseThrow();
+        System.out.println(user);
+    }
 }
