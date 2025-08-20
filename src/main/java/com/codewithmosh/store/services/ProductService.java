@@ -68,4 +68,10 @@ public class ProductService {
         var products = productRepository.findByCategory(new Category((byte) 1));
         products.forEach(System.out::println);
     }
+
+    @Transactional
+    public void findProducts() {
+        var products = productRepository.findProducts(BigDecimal.valueOf(0), BigDecimal.valueOf(200));
+        products.forEach(System.out::println);
+    }
 }
