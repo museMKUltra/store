@@ -18,6 +18,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("select u from User u")
     List<User> findAllWithAddresses();
 
-    @Query("select u.id as id, u.email as email from User u right join Profile p on p.id = u.id where p.loyaltyPoints > :points order by u.email")
-    List<UserSummary> findByLoyaltyPoints(@Param("points") Integer points);
+    @Query("select u.id as id, u.email as email from User u where u.profile.loyaltyPoints > :points order by u.email")
+    List<UserSummary> findLoyalUsers(@Param("points") Integer points);
 }

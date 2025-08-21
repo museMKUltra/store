@@ -104,9 +104,9 @@ public class UserService {
 
     @Transactional
     public void findLoyaltyPoints() {
-        var profiles = profileRepository.findLoyalProfiles(2);
-        profiles.forEach(p -> {
-            System.out.println(p.getId() + ": " + p.getEmail());
+        var users = userRepository.findLoyalUsers(2);
+        users.forEach(u -> {
+            System.out.println(u.getId() + ": " + u.getEmail());
         });
     }
 }
