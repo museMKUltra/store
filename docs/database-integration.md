@@ -122,3 +122,7 @@ Create queries using an example object
 ### Using Criteria API
 
 Create queries dynamically using Java code instead of JPQL/SQL.
+
+### Using Specifications API
+
+Provides a structured way to create reusable and composable queries.
