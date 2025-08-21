@@ -142,7 +142,7 @@ public class UserService {
     }
 
     public void fetchProductsBySpecifications(String name, BigDecimal minPrice, BigDecimal maxPrice) {
-        Specification<Product> spec = Specification.where(null);
+        Specification<Product> spec = Specification.allOf();
 
         if (name != null) {
             spec = spec.and(ProductSpec.hasName(name));
