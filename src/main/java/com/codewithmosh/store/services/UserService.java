@@ -1,15 +1,21 @@
 package com.codewithmosh.store.services;
 
 import com.codewithmosh.store.entities.Address;
+import com.codewithmosh.store.entities.Product;
 import com.codewithmosh.store.entities.Profile;
 import com.codewithmosh.store.entities.User;
 import com.codewithmosh.store.repositories.AddressRepository;
+import com.codewithmosh.store.repositories.ProductRepository;
 import com.codewithmosh.store.repositories.ProfileRepository;
 import com.codewithmosh.store.repositories.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -18,6 +24,7 @@ public class UserService {
     private final ProfileRepository profileRepository;
     private final EntityManager entityManager;
     private final AddressRepository addressRepository;
+    private final ProductRepository productRepository;
 
     @Transactional
     public void showEntityStates() {
@@ -108,5 +115,23 @@ public class UserService {
         users.forEach(u -> {
             System.out.println(u.getId() + ": " + u.getEmail());
         });
+    }
+
+    @Transactional
+    public void fetchProducts() {
+        var product = new Product();
+        product.setName("product");
+
+        var matcher = ExampleMatcher.matching()
+                .withIncludeNullValues()
+                .withIgnorePaths("id", "description")
+                .withIgnoreCase()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+
+        var example = Example.of(product, matcher);
+
+        var products = productRepository.findAll(example);
+        products.forEach(System.out::println);
+
     }
 }

@@ -3,16 +3,16 @@ package com.codewithmosh.store.repositories;
 import com.codewithmosh.store.entities.Category;
 import com.codewithmosh.store.entities.Product;
 import com.codewithmosh.store.projections.ProductSummaryDto;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface ProductRepository extends CrudRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
     // String
     List<Product> findByName(String name); // select * from product where name = ?
 
