@@ -15,6 +15,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -132,6 +133,10 @@ public class UserService {
 
         var products = productRepository.findAll(example);
         products.forEach(System.out::println);
+    }
 
+    public void fetchProductByCriteria() {
+        var products = productRepository.findProductsByCriteria("prod", BigDecimal.valueOf(100), null);
+        products.forEach(System.out::println);
     }
 }
