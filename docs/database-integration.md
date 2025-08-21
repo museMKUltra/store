@@ -101,3 +101,20 @@ Related objects are loaded when accessed.
 
 - Better to use **interfaces in the majority of cases**
 - Use classes only if you need to **include additional logic in that class**
+
+## Writing Dynamic Queries
+
+**Be more flexible** when filtering data based on user input.
+
+> To handle varying search criteria **without writing dozens of hard code query methods**.
+
+### Query by Example
+
+Create queries using an example object
+
+#### Limitations
+
+- No support for nested properties
+- No support for matching collections/maps
+- Database-specific support for matching strings
+- Exact matching for other types (e.g. numbers/dates)
