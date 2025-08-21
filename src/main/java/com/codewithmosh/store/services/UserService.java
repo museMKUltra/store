@@ -106,7 +106,7 @@ public class UserService {
     public void findLoyaltyPoints() {
         var profiles = profileRepository.findLoyalProfiles(2);
         profiles.forEach(p -> {
-            System.out.println(p.getId() + ": " + p.getUser().getEmail());
+            System.out.println(p.getId() + ": " + p.getEmail());
         });
     }
 }
