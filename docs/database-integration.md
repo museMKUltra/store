@@ -118,3 +118,7 @@ Create queries using an example object
 - No support for matching collections/maps
 - Database-specific support for matching strings
 - Exact matching for other types (e.g. numbers/dates)
+
+### Using Criteria API
+
+Create queries dynamically using Java code instead of JPQL/SQL.
