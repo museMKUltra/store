@@ -4,10 +4,7 @@ import com.codewithmosh.store.entities.Address;
 import com.codewithmosh.store.entities.Product;
 import com.codewithmosh.store.entities.Profile;
 import com.codewithmosh.store.entities.User;
-import com.codewithmosh.store.repositories.AddressRepository;
-import com.codewithmosh.store.repositories.ProductRepository;
-import com.codewithmosh.store.repositories.ProfileRepository;
-import com.codewithmosh.store.repositories.UserRepository;
+import com.codewithmosh.store.repositories.*;
 import com.codewithmosh.store.repositories.specifications.ProductSpec;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -27,6 +24,7 @@ public class UserService {
     private final EntityManager entityManager;
     private final AddressRepository addressRepository;
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
     @Transactional
     public void showEntityStates() {
@@ -137,7 +135,8 @@ public class UserService {
     }
 
     public void fetchProductByCriteria() {
-        var products = productRepository.findProductsByCriteria("prod", BigDecimal.valueOf(100), null);
+        var category = categoryRepository.findById((byte) 1).orElseThrow();
+        var products = productRepository.findProductsByCriteria(null, null, null, category);
         products.forEach(System.out::println);
     }
 

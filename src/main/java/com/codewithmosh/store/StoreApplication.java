@@ -1,6 +1,7 @@
 package com.codewithmosh.store;
 
 import com.codewithmosh.store.services.ProductService;
+import com.codewithmosh.store.services.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -10,8 +11,8 @@ public class StoreApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
-        var service = context.getBean(ProductService.class);
-        service.fetchPaginatedProducts(0, 10);
+        var service = context.getBean(UserService.class);
+        service.fetchProductByCriteria();
     }
 
 }
