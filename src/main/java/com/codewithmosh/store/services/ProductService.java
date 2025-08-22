@@ -7,6 +7,7 @@ import com.codewithmosh.store.repositories.ProductRepository;
 import com.codewithmosh.store.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -73,5 +74,13 @@ public class ProductService {
     public void findProducts() {
         var products = productRepository.findProducts(BigDecimal.valueOf(0), BigDecimal.valueOf(200));
         products.forEach(System.out::println);
+    }
+
+    public void fetchSortedProducts() {
+        var sort = Sort.by("name").and(
+                Sort.by("price").descending()
+        );
+
+        productRepository.findAll(sort).forEach(System.out::println);
     }
 }
