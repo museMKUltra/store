@@ -1,9 +1,6 @@
 package com.codewithmosh.store.services;
 
-import com.codewithmosh.store.entities.Address;
-import com.codewithmosh.store.entities.Product;
-import com.codewithmosh.store.entities.Profile;
-import com.codewithmosh.store.entities.User;
+import com.codewithmosh.store.entities.*;
 import com.codewithmosh.store.repositories.*;
 import com.codewithmosh.store.repositories.specifications.ProductSpec;
 import jakarta.persistence.EntityManager;
@@ -140,7 +137,7 @@ public class UserService {
         products.forEach(System.out::println);
     }
 
-    public void fetchProductsBySpecifications(String name, BigDecimal minPrice, BigDecimal maxPrice) {
+    public void fetchProductsBySpecifications(String name, BigDecimal minPrice, BigDecimal maxPrice, Category category) {
         Specification<Product> spec = Specification.allOf();
 
         if (name != null) {
@@ -155,6 +152,19 @@ public class UserService {
             spec = spec.and(ProductSpec.hasPriceLessThanOrEqualTo(maxPrice));
         }
 
+        if (category != null) {
+            spec = spec.and(ProductSpec.hasCategory(category));
+        }
+
         productRepository.findAll(spec).forEach(System.out::println);
+    }
+
+    public void fetchProductsBySpecifications(String name, BigDecimal minPrice, BigDecimal maxPrice) {
+        fetchProductsBySpecifications(name, minPrice, maxPrice, null);
+    }
+
+    public void fetchProductsBySpecifications() {
+        var category = categoryRepository.findById((byte) 1).orElseThrow();
+        fetchProductsBySpecifications(null, null, null, category);
     }
 }
